@@ -15,6 +15,9 @@ namespace chatWithRobot.Views
             if (e.CurrentSelection.FirstOrDefault() is Chat selectedChat)
             {
                 await Navigation.PushAsync(new ChatPage2(selectedChat));
+
+                // После навигации сбрасываем выбранный элемент
+                ((CollectionView)sender).SelectedItem = null;
             }
         }
     }

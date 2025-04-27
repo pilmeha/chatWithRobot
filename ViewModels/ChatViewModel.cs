@@ -25,7 +25,19 @@ namespace chatWithRobot.ViewModels
 
         public ObservableCollection<Message> Messages => Chat.Messages;
 
-        public string NewMessageText { get; set; }
+        private string _newMessageText;
+        public string NewMessageText
+        {
+            get => _newMessageText;
+            set
+            {
+                if (_newMessageText != value)
+                {
+                    _newMessageText = value;
+                    //OnPropertyChanged();
+                }
+            }
+        }
 
         public ICommand SendMessageCommand { get; }
 
@@ -60,6 +72,9 @@ namespace chatWithRobot.ViewModels
                 Text = response,
                 Date = DateTime.Now
             });
+
+            // ОЧИСТКА ПОЛЯ ввода
+            NewMessageText = string.Empty;
         }
     }
 }

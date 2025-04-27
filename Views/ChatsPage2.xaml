@@ -10,6 +10,10 @@
         <vm:ChatsViewModel />
     </ContentPage.BindingContext>
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="+" Command="{Binding AddChatCommand}" />
+    </ContentPage.ToolbarItems>
+
     <CollectionView ItemsSource="{Binding Chats}" SelectionMode="Single" SelectionChanged="CollectionView_SelectionChanged">
         <CollectionView.ItemTemplate>
             <DataTemplate>
