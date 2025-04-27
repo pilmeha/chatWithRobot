@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="chatWithRobot.Views.ChatPage2"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:chatWithRobot.ViewModels"
+    Title="Чат">
+
+    <ContentPage.Content>
+        <StackLayout>
+            <CollectionView ItemsSource="{Binding Messages}" VerticalOptions="FillAndExpand">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="5" Margin="5" BorderColor="LightGray" CornerRadius="5">
+                            <StackLayout>
+                                <Label Text="{Binding Sender}" FontAttributes="Bold" />
+                                <Label Text="{Binding Text}" />
+                                <Label Text="{Binding Date, StringFormat='{0:g}'}" FontSize="Small" TextColor="Gray"/>
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <StackLayout Orientation="Horizontal" Padding="5">
+                <Entry Text="{Binding NewMessageText}" Placeholder="Введите сообщение..." HorizontalOptions="FillAndExpand"/>
+                <Button Text="Отправить" Command="{Binding SendMessageCommand}" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
